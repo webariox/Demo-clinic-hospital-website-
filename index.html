@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ClearLife Clinic — Your Health, Our Priority</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#2D7A5F;--green-light:#E8F5F0;--green-mid:#C5E8DC;--sage:#6BAE98;
+  --dark:#1A2E28;--text:#1E3530;--muted:#6B8078;--white:#fff;--bg:#F7FBF9;
+  --border:#DFF0E9;--shadow:0 4px 24px rgba(45,122,95,0.08);--shadow-lg:0 12px 48px rgba(45,122,95,0.14);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,251,249,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;height:72px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:.6rem;}
+.nav-logo-mark{width:36px;height:36px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--dark);}
+.nav-logo-text span{color:var(--green);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.88rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--green);}
+.nav-cta{background:var(--green);color:#fff;padding:.6rem 1.5rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:.88rem;transition:all .2s;}
+.nav-cta:hover{background:#236b50;transform:translateY(-1px);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:80px 5% 60px;background:linear-gradient(160deg,#f0faf5 0%,var(--bg) 60%);}
+.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+.hero-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-light);color:var(--green);padding:.4rem 1rem;border-radius:50px;font-size:.82rem;font-weight:600;margin-bottom:1.5rem;border:1px solid var(--green-mid);}
+.hero-pill::before{content:'●';font-size:.5rem;animation:blink 2s ease infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:700;line-height:1.15;color:var(--dark);margin-bottom:1.3rem;}
+h1.hero-title em{color:var(--green);font-style:italic;}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:480px;margin-bottom:2.2rem;line-height:1.75;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn-pg{background:var(--green);color:#fff;padding:.85rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:.97rem;transition:all .25s;box-shadow:0 6px 24px rgba(45,122,95,0.28);}
+.btn-pg:hover{background:#236b50;transform:translateY(-2px);}
+.btn-og{border:2px solid var(--green-mid);color:var(--green);padding:.82rem 1.8rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:.97rem;transition:all .25s;}
+.btn-og:hover{background:var(--green-light);}
+.trust-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.trust-avatars{display:flex;}
+.trust-av{width:34px;height:34px;border-radius:50%;border:2px solid #fff;margin-right:-10px;background:linear-gradient(135deg,var(--sage),var(--green));display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;}
+.trust-text{font-size:.85rem;color:var(--muted);}
+.trust-text strong{color:var(--dark);}
+
+/* HERO CARD */
+.hero-card{background:var(--white);border-radius:24px;padding:2.2rem;box-shadow:var(--shadow-lg);border:1px solid var(--border);position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--sage));}
+.card-hdr{display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem;}
+.card-ico{width:46px;height:46px;background:var(--green-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--dark);}
+.card-sub{font-size:.78rem;color:var(--muted);}
+.svc-list{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.5rem;}
+.svc-item{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;background:var(--bg);border-radius:10px;border:1px solid var(--border);transition:all .2s;cursor:pointer;}
+.svc-item:hover{background:var(--green-light);border-color:var(--green-mid);}
+.svc-em{font-size:1.1rem;}
+.svc-nm{font-weight:600;font-size:.88rem;color:var(--dark);}
+.svc-sb{font-size:.72rem;color:var(--muted);}
+.svc-arr{margin-left:auto;color:var(--green);}
+.avail-badge{display:flex;align-items:center;gap:.6rem;background:var(--green-light);border:1px solid var(--green-mid);border-radius:50px;padding:.5rem 1rem;font-size:.78rem;font-weight:600;color:var(--green);}
+.avail-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s ease infinite;}
+
+/* SECTION */
+section{padding:90px 5%;}
+.sec-tag{display:inline-flex;align-items:center;gap:.4rem;background:var(--green-light);color:var(--green);padding:.35rem .9rem;border-radius:50px;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem;border:1px solid var(--green-mid);}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:700;color:var(--dark);margin-bottom:1rem;line-height:1.2;}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:520px;line-height:1.75;}
+.tc{text-align:center;}.tc .sec-sub{margin:0 auto;}
+
+/* SERVICES */
+#services{background:var(--white);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3rem;}
+.sc{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all .3s;}
+.sc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--green-mid);background:var(--white);}
+.sc-ico{width:52px;height:52px;background:var(--green-light);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.1rem;border:1px solid var(--green-mid);}
+.sc h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;}
+.sc p{color:var(--muted);font-size:.88rem;line-height:1.65;}
+
+/* ══════════════════════════════════════
+   BOOKING SECTION — INTERACTIVE
+══════════════════════════════════════ */
+#booking{background:var(--bg);}
+.booking-wrap{margin-top:3rem;background:var(--white);border-radius:24px;border:1px solid var(--border);box-shadow:var(--shadow-lg);overflow:hidden;}
+
+/* Step indicator */
+.steps-bar{display:flex;background:var(--green-light);border-bottom:1px solid var(--green-mid);}
+.step-tab{flex:1;padding:1.2rem 1rem;text-align:center;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;position:relative;}
+.step-tab.active{background:var(--white);border-bottom-color:var(--green);}
+.step-tab.done{background:var(--green-light);}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--green-mid);color:var(--green);font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;margin:0 auto .4rem;}
+.step-tab.active .step-num{background:var(--green);color:#fff;}
+.step-tab.done .step-num{background:var(--green);color:#fff;}
+.step-tab.done .step-num::after{content:'✓';}
+.step-lbl{font-size:.78rem;font-weight:600;color:var(--muted);}
+.step-tab.active .step-lbl{color:var(--green);}
+
+/* Step panels */
+.booking-body{padding:2.5rem;}
+.step-panel{display:none;}
+.step-panel.active{display:block;}
+
+/* Step 1: Doctor select */
+.doctor-select-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;}
+.doc-option{border:2px solid var(--border);border-radius:14px;padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:all .2s;}
+.doc-option:hover{border-color:var(--green-mid);}
+.doc-option.selected{border-color:var(--green);background:var(--green-light);}
+.doc-avatar{font-size:2.8rem;margin-bottom:.6rem;}
+.doc-name{font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;color:var(--dark);}
+.doc-spec{font-size:.78rem;color:var(--green);font-weight:600;margin-top:.2rem;}
+.doc-avail{font-size:.72rem;color:var(--muted);margin-top:.3rem;}
+.avail-green{color:var(--green)!important;font-weight:600;}
+
+/* Step 2: Date + Time */
+.date-time-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.dt-label{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem;}
+.date-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.date-btn{padding:.55rem 1rem;border-radius:50px;border:1.5px solid var(--border);background:var(--bg);font-size:.82rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;text-align:center;}
+.date-btn:hover{border-color:var(--green-mid);color:var(--green);}
+.date-btn.selected{background:var(--green);color:#fff;border-color:var(--green);}
+.date-btn.disabled{opacity:.35;cursor:not-allowed;}
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;}
+.time-btn{padding:.6rem .5rem;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;text-align:center;}
+.time-btn:hover{border-color:var(--green-mid);color:var(--green);}
+.time-btn.selected{background:var(--green);color:#fff;border-color:var(--green);}
+.time-btn.booked{background:var(--bg);color:var(--border);border-color:var(--border);cursor:not-allowed;text-decoration:line-through;}
+
+/* Step 3: Patient details */
+.patient-form .fg{margin-bottom:1rem;}
+.patient-form label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em;}
+.patient-form input,.patient-form select,.patient-form textarea{width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.93rem;color:var(--text);background:var(--bg);outline:none;transition:border .2s;resize:vertical;}
+.patient-form input:focus,.patient-form select:focus,.patient-form textarea:focus{border-color:var(--green);background:#fff;}
+.patient-form textarea{min-height:80px;}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+/* Step 4: Confirm */
+.confirm-card{background:var(--green-light);border:1px solid var(--green-mid);border-radius:16px;padding:2rem;margin-bottom:1.5rem;}
+.confirm-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:1.2rem;}
+.confirm-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--green-mid);}
+.confirm-row:last-child{border-bottom:none;}
+.cr-label{font-size:.82rem;color:var(--muted);font-weight:500;}
+.cr-val{font-size:.9rem;font-weight:700;color:var(--dark);}
+
+/* Nav buttons */
+.booking-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+.btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:.75rem 1.8rem;border-radius:50px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;}
+.btn-back:hover{border-color:var(--green);color:var(--green);}
+.btn-next{background:var(--green);color:#fff;border:none;padding:.8rem 2rem;border-radius:50px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .25s;box-shadow:0 4px 16px rgba(45,122,95,0.25);}
+.btn-next:hover{background:#236b50;transform:translateY(-1px);}
+.btn-confirm{background:var(--green);color:#fff;border:none;padding:.95rem 2.5rem;border-radius:50px;font-weight:700;font-size:1rem;cursor:pointer;transition:all .25s;box-shadow:0 6px 20px rgba(45,122,95,0.3);}
+.btn-confirm:hover{background:#236b50;transform:translateY(-2px);}
+
+/* Success */
+.booking-success{display:none;text-align:center;padding:3rem 2rem;}
+.success-icon{font-size:4rem;margin-bottom:1.5rem;}
+.success-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--dark);margin-bottom:.8rem;}
+.success-sub{color:var(--muted);font-size:1rem;line-height:1.7;max-width:400px;margin:0 auto 1.5rem;}
+.appt-ref{background:var(--green-light);border:1px solid var(--green-mid);border-radius:50px;padding:.5rem 1.5rem;display:inline-block;font-weight:700;color:var(--green);font-size:.9rem;}
+
+/* DOCTORS */
+#doctors{background:var(--white);}
+.doctors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3rem;}
+.dc{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;}
+.dc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.dc-avatar{height:160px;background:linear-gradient(135deg,var(--green-light),var(--green-mid));display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;}
+.dc-status{position:absolute;top:12px;right:12px;background:#fff;border-radius:50px;padding:.3rem .7rem;font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:.3rem;}
+.dc-status.open{color:var(--green);}
+.dc-status.busy{color:#f59e0b;}
+.dc-status-dot{width:7px;height:7px;border-radius:50%;}
+.dc-status.open .dc-status-dot{background:var(--green);}
+.dc-status.busy .dc-status-dot{background:#f59e0b;}
+.dc-info{padding:1.4rem;}
+.dc-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.3rem;}
+.dc-spec{font-size:.82rem;color:var(--green);font-weight:600;margin-bottom:.5rem;}
+.dc-exp{font-size:.78rem;color:var(--muted);margin-bottom:.8rem;}
+.dc-tags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.dtag{background:var(--green-light);color:var(--green);padding:.22rem .65rem;border-radius:50px;font-size:.68rem;font-weight:600;}
+.btn-book-doc{display:block;text-align:center;background:var(--green-light);color:var(--green);border:1px solid var(--green-mid);padding:.65rem;font-weight:700;font-size:.85rem;text-decoration:none;margin-top:1rem;border-radius:50px;transition:all .2s;cursor:pointer;}
+.btn-book-doc:hover{background:var(--green);color:#fff;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;margin-top:3rem;}
+.tc-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s;}
+.tc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.tstars{color:#f59e0b;font-size:.9rem;letter-spacing:2px;margin-bottom:.9rem;}
+.ttext{font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;color:var(--text);line-height:1.7;margin-bottom:1.3rem;}
+.twho{display:flex;align-items:center;gap:.8rem;}
+.wav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--green));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;}
+.wname{font-weight:600;font-size:.88rem;color:var(--dark);}
+.winfo{font-size:.75rem;color:var(--muted);}
+
+/* CONTACT */
+#contact{background:var(--white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;margin-top:3rem;}
+.ic{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.1rem;padding:1rem;background:var(--bg);border:1px solid var(--border);border-radius:12px;}
+.ic-icon{width:40px;height:40px;min-width:40px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.ic-lbl{font-size:.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.ic-val{font-weight:600;font-size:.9rem;color:var(--dark);}
+
+footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:2.5rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.fl{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700;}
+footer a{color:var(--sage);text-decoration:none;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s;}
+.reveal.visible{opacity:1;transform:none;}
+@media(max-width:768px){.hero-grid,.contact-grid,.date-time-grid,.form-row-2{grid-template-columns:1fr;}.hero-right{display:none;}.nav-links{display:none;}.steps-bar{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><div class="nav-logo-mark">🏥</div><div class="nav-logo-text">Clear<span>Life</span></div></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#booking">Book Appointment</a></li>
+    <li><a href="#doctors">Doctors</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-pill">Now Accepting New Patients</div>
+      <h1 class="hero-title">Your Health<br>Deserves the<br><em>Best Care</em></h1>
+      <p class="hero-desc">ClearLife Clinic combines modern medicine with genuine compassion. Expert doctors, advanced diagnostics, and personalised care — all under one roof.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-pg">Book Appointment</a>
+        <a href="#services" class="btn-og">Our Services</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-avatars"><div class="trust-av">RK</div><div class="trust-av">SM</div><div class="trust-av">AP</div><div class="trust-av">VG</div></div>
+        <div class="trust-text"><strong>4,800+ patients</strong> trust ClearLife</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="card-hdr"><div class="card-ico">📋</div><div><div class="card-title">Quick Appointment</div><div class="card-sub">Available today</div></div></div>
+        <div class="svc-list">
+          <div class="svc-item"><span class="svc-em">🩺</span><div><div class="svc-nm">General Consultation</div><div class="svc-sb">30 min · ₹500</div></div><span class="svc-arr">→</span></div>
+          <div class="svc-item"><span class="svc-em">🫀</span><div><div class="svc-nm">Cardiology Checkup</div><div class="svc-sb">45 min · ₹1,200</div></div><span class="svc-arr">→</span></div>
+          <div class="svc-item"><span class="svc-em">🧬</span><div><div class="svc-nm">Full Blood Panel</div><div class="svc-sb">Results in 24h</div></div><span class="svc-arr">→</span></div>
+          <div class="svc-item"><span class="svc-em">🦷</span><div><div class="svc-nm">Dental Checkup</div><div class="svc-sb">30 min · ₹400</div></div><span class="svc-arr">→</span></div>
+        </div>
+        <div class="avail-badge"><div class="avail-dot"></div>Slots available today</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-tag">What We Offer</div>
+  <h2 class="sec-title">Comprehensive Healthcare</h2>
+  <p class="sec-sub">From routine checkups to specialised care — we cover everything your family needs.</p>
+  <div class="services-grid reveal">
+    <div class="sc"><div class="sc-ico">🩺</div><h3>General Medicine</h3><p>Comprehensive consultations, preventive care, and routine health management.</p></div>
+    <div class="sc"><div class="sc-ico">🫀</div><h3>Cardiology</h3><p>Advanced cardiac care including ECG, echocardiography, and expert heart condition management.</p></div>
+    <div class="sc"><div class="sc-ico">👁️</div><h3>Ophthalmology</h3><p>Complete eye care — vision testing, spectacle prescriptions, and eye condition treatment.</p></div>
+    <div class="sc"><div class="sc-ico">🦷</div><h3>Dental Care</h3><p>Full dental services from routine cleaning to cosmetic dentistry and orthodontics.</p></div>
+    <div class="sc"><div class="sc-ico">🧬</div><h3>Diagnostics & Lab</h3><p>In-house laboratory with quick turnaround for blood tests, imaging, and analysis.</p></div>
+    <div class="sc"><div class="sc-ico">👶</div><h3>Paediatrics</h3><p>Specialised care for children from newborns to adolescents, including vaccinations.</p></div>
+  </div>
+</section>
+
+<!-- BOOKING — INTERACTIVE MULTI-STEP -->
+<section id="booking" style="background:var(--bg);">
+  <div class="tc">
+    <div class="sec-tag">Online Booking</div>
+    <h2 class="sec-title">Book Your Appointment</h2>
+    <p class="sec-sub">Pick your doctor, choose a date and time slot, fill your details — confirmed in seconds.</p>
+  </div>
+
+  <div class="booking-wrap reveal" style="margin-top:2.5rem;">
+    <!-- Step bar -->
+    <div class="steps-bar">
+      <div class="step-tab active" id="tab1"><div class="step-num">1</div><div class="step-lbl">Choose Doctor</div></div>
+      <div class="step-tab" id="tab2"><div class="step-num">2</div><div class="step-lbl">Date & Time</div></div>
+      <div class="step-tab" id="tab3"><div class="step-num">3</div><div class="step-lbl">Your Details</div></div>
+      <div class="step-tab" id="tab4"><div class="step-num">4</div><div class="step-lbl">Confirm</div></div>
+    </div>
+
+    <div class="booking-body" id="bookingBody">
+
+      <!-- STEP 1 -->
+      <div class="step-panel active" id="panel1">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:.5rem;">Select a Doctor</h3>
+        <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;">Choose the specialist you'd like to see today.</p>
+        <div class="doctor-select-grid">
+          <div class="doc-option" onclick="selectDoctor(this,'Dr. Rajesh Mehta','General Physician','₹500')">
+            <div class="doc-avatar">👨‍⚕️</div>
+            <div class="doc-name">Dr. Rajesh Mehta</div>
+            <div class="doc-spec">General Physician</div>
+            <div class="doc-avail avail-green">● Available Today</div>
+          </div>
+          <div class="doc-option" onclick="selectDoctor(this,'Dr. Priya Sharma','Cardiologist','₹1,200')">
+            <div class="doc-avatar">👩‍⚕️</div>
+            <div class="doc-name">Dr. Priya Sharma</div>
+            <div class="doc-spec">Cardiologist</div>
+            <div class="doc-avail avail-green">● Available Today</div>
+          </div>
+          <div class="doc-option" onclick="selectDoctor(this,'Dr. Aryan Patel','Paediatrician','₹700')">
+            <div class="doc-avatar">👨‍⚕️</div>
+            <div class="doc-name">Dr. Aryan Patel</div>
+            <div class="doc-spec">Paediatrician</div>
+            <div class="doc-avail" style="color:#f59e0b;">● Next slot: 3PM</div>
+          </div>
+          <div class="doc-option" onclick="selectDoctor(this,'Dr. Neha Gupta','Dental Surgeon','₹400')">
+            <div class="doc-avatar">👩‍⚕️</div>
+            <div class="doc-name">Dr. Neha Gupta</div>
+            <div class="doc-spec">Dental Surgeon</div>
+            <div class="doc-avail avail-green">● Available Today</div>
+          </div>
+        </div>
+        <div class="booking-nav">
+          <div></div>
+          <button class="btn-next" onclick="goStep(2)">Choose Date & Time →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-panel" id="panel2">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:.5rem;">Pick a Date</h3>
+        <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;">Select an available date and time slot.</p>
+        <div class="date-time-grid">
+          <div>
+            <div class="dt-label">Available Dates</div>
+            <div class="date-row" id="dateRow"></div>
+          </div>
+          <div>
+            <div class="dt-label">Time Slots</div>
+            <div class="time-grid" id="timeGrid"></div>
+          </div>
+        </div>
+        <div class="booking-nav">
+          <button class="btn-back" onclick="goStep(1)">← Back</button>
+          <button class="btn-next" onclick="goStep(3)">Your Details →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-panel" id="panel3">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:1.5rem;">Your Information</h3>
+        <div class="patient-form">
+          <div class="form-row-2">
+            <div class="fg"><label>First Name</label><input type="text" id="pName" placeholder="Rahul"/></div>
+            <div class="fg"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+          </div>
+          <div class="form-row-2">
+            <div class="fg"><label>Phone</label><input type="tel" id="pPhone" placeholder="+91 XXXXX XXXXX"/></div>
+            <div class="fg"><label>Email</label><input type="email" placeholder="rahul@email.com"/></div>
+          </div>
+          <div class="form-row-2">
+            <div class="fg"><label>Age</label><input type="number" placeholder="32"/></div>
+            <div class="fg"><label>Gender</label><select><option>Male</option><option>Female</option><option>Other</option></select></div>
+          </div>
+          <div class="fg"><label>Symptoms / Reason for Visit</label><textarea placeholder="Briefly describe what you're experiencing..."></textarea></div>
+          <div class="fg"><label>Visit Type</label>
+            <select><option>First Visit</option><option>Follow-up</option><option>Routine Checkup</option><option>Emergency</option></select>
+          </div>
+        </div>
+        <div class="booking-nav">
+          <button class="btn-back" onclick="goStep(2)">← Back</button>
+          <button class="btn-next" onclick="goStep(4)">Review Booking →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-panel" id="panel4">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:1.5rem;">Review & Confirm</h3>
+        <div class="confirm-card">
+          <div class="confirm-title">📋 Appointment Summary</div>
+          <div class="confirm-row"><span class="cr-label">Doctor</span><span class="cr-val" id="cfDoctor">—</span></div>
+          <div class="confirm-row"><span class="cr-label">Speciality</span><span class="cr-val" id="cfSpec">—</span></div>
+          <div class="confirm-row"><span class="cr-label">Date</span><span class="cr-val" id="cfDate">—</span></div>
+          <div class="confirm-row"><span class="cr-label">Time</span><span class="cr-val" id="cfTime">—</span></div>
+          <div class="confirm-row"><span class="cr-label">Consultation Fee</span><span class="cr-val" id="cfFee">—</span></div>
+          <div class="confirm-row"><span class="cr-label">Patient</span><span class="cr-val" id="cfPatient">—</span></div>
+        </div>
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;">By confirming, you agree to our cancellation policy. A confirmation SMS will be sent to your phone.</p>
+        <div class="booking-nav">
+          <button class="btn-back" onclick="goStep(3)">← Back</button>
+          <button class="btn-confirm" onclick="confirmBooking()">✓ Confirm Appointment</button>
+        </div>
+      </div>
+
+    </div><!-- end booking-body -->
+
+    <!-- SUCCESS -->
+    <div class="booking-success" id="bookingSuccess">
+      <div class="success-icon">✅</div>
+      <div class="success-title">Appointment Confirmed!</div>
+      <p class="success-sub">Your appointment has been booked successfully. A confirmation has been sent to your phone. Please arrive 10 minutes early.</p>
+      <div class="appt-ref">Ref: CLR-<span id="refNum"></span></div>
+      <div style="margin-top:1.5rem;"><button class="btn-next" onclick="resetBooking()">Book Another →</button></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section id="doctors">
+  <div class="sec-tag">Our Team</div>
+  <h2 class="sec-title">Meet Our Doctors</h2>
+  <div class="doctors-grid reveal">
+    <div class="dc"><div class="dc-avatar">👨‍⚕️<div class="dc-status open"><div class="dc-status-dot"></div>Available</div></div><div class="dc-info"><div class="dc-name">Dr. Rajesh Mehta</div><div class="dc-spec">General Physician</div><div class="dc-exp">18 Years Experience · MBBS, MD</div><div class="dc-tags"><span class="dtag">General</span><span class="dtag">Diabetes</span></div><button class="btn-book-doc" onclick="window.location='#booking'">Book Appointment</button></div></div>
+    <div class="dc"><div class="dc-avatar">👩‍⚕️<div class="dc-status open"><div class="dc-status-dot"></div>Available</div></div><div class="dc-info"><div class="dc-name">Dr. Priya Sharma</div><div class="dc-spec">Cardiologist</div><div class="dc-exp">12 Years Experience · MBBS, DM</div><div class="dc-tags"><span class="dtag">Cardiology</span><span class="dtag">BP</span></div><button class="btn-book-doc" onclick="window.location='#booking'">Book Appointment</button></div></div>
+    <div class="dc"><div class="dc-avatar">👨‍⚕️<div class="dc-status busy"><div class="dc-status-dot"></div>Busy</div></div><div class="dc-info"><div class="dc-name">Dr. Aryan Patel</div><div class="dc-spec">Paediatrician</div><div class="dc-exp">10 Years Experience · MBBS, DCH</div><div class="dc-tags"><span class="dtag">Paediatrics</span><span class="dtag">Vaccine</span></div><button class="btn-book-doc" onclick="window.location='#booking'">Book Appointment</button></div></div>
+    <div class="dc"><div class="dc-avatar">👩‍⚕️<div class="dc-status open"><div class="dc-status-dot"></div>Available</div></div><div class="dc-info"><div class="dc-name">Dr. Neha Gupta</div><div class="dc-spec">Dental Surgeon</div><div class="dc-exp">8 Years Experience · BDS, MDS</div><div class="dc-tags"><span class="dtag">Dental</span><span class="dtag">Cosmetic</span></div><button class="btn-book-doc" onclick="window.location='#booking'">Book Appointment</button></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--bg);">
+  <div class="tc"><div class="sec-tag">Patient Stories</div><h2 class="sec-title">What Our Patients Say</h2></div>
+  <div class="testi-grid reveal">
+    <div class="tc-card"><div class="tstars">★★★★★</div><p class="ttext">"Booked online in 2 minutes, saw Dr. Mehta same day. The whole process was so smooth and the care was outstanding."</p><div class="twho"><div class="wav">AM</div><div><div class="wname">Anjali Mishra</div><div class="winfo">General Medicine</div></div></div></div>
+    <div class="tc-card"><div class="tstars">★★★★★</div><p class="ttext">"Dr. Patel is incredible with kids — calm, patient, and thorough. The online booking made it so easy to schedule around our busy day."</p><div class="twho"><div class="wav">SK</div><div><div class="wname">Suresh Kumar</div><div class="winfo">Paediatrics</div></div></div></div>
+    <div class="tc-card"><div class="tstars">★★★★★</div><p class="ttext">"Full cardiac workup in one visit. Dr. Sharma explained everything clearly. I could see real-time slot availability online — very impressive."</p><div class="twho"><div class="wav">RV</div><div><div class="wname">Ramesh Verma</div><div class="winfo">Cardiology</div></div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-tag">Find Us</div>
+  <h2 class="sec-title">Get In Touch</h2>
+  <div class="contact-grid reveal">
+    <div>
+      <p style="color:var(--muted);margin-bottom:1.5rem;line-height:1.75;">Walk-ins welcome. For fastest service, book your slot online above.</p>
+      <div class="ic"><div class="ic-icon">📍</div><div><div class="ic-lbl">Address</div><div class="ic-val">14 Health Avenue, Koregaon Park, Pune</div></div></div>
+      <div class="ic"><div class="ic-icon">📞</div><div><div class="ic-lbl">Phone</div><div class="ic-val">+91 XXXXX XXXXX</div></div></div>
+      <div class="ic"><div class="ic-icon">🕐</div><div><div class="ic-lbl">Hours</div><div class="ic-val">Mon–Sat: 8AM–8PM · Sun: 9AM–2PM</div></div></div>
+      <div class="ic"><div class="ic-icon">📧</div><div><div class="ic-lbl">Email</div><div class="ic-val">hello@clearlifeclinic.in</div></div></div>
+    </div>
+    <div style="background:var(--green-light);border:1px solid var(--green-mid);border-radius:16px;padding:2.5rem;text-align:center;">
+      <div style="font-size:3rem;margin-bottom:1rem;">📱</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:.7rem;">WhatsApp Us</h3>
+      <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;line-height:1.7;">Have a quick question? Message us directly on WhatsApp — we reply within minutes.</p>
+      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn-pg" style="display:inline-block;">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">ClearLife Clinic</div>
+  <p>© 2025 ClearLife Clinic. All rights reserved.</p>
+  <div style="font-size:.8rem;">Website by <a href="#">Webariox</a></div>
+</footer>
+
+<script>
+// ── Booking state ──
+let booking = { doctor:'', spec:'', fee:'', date:'', time:'' };
+
+function selectDoctor(el, name, spec, fee) {
+  document.querySelectorAll('.doc-option').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+  booking.doctor = name; booking.spec = spec; booking.fee = fee;
+}
+
+// Generate next 7 days
+function buildDates() {
+  const row = document.getElementById('dateRow');
+  row.innerHTML = '';
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(); d.setDate(d.getDate() + i);
+    const btn = document.createElement('button');
+    btn.className = 'date-btn' + (i === 0 ? ' selected' : '');
+    btn.innerHTML = `<div style="font-size:.7rem">${days[d.getDay()]}</div><div style="font-weight:800">${d.getDate()}</div><div style="font-size:.7rem">${months[d.getMonth()]}</div>`;
+    btn.onclick = () => { document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); booking.date = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`; };
+    if (i === 0) { booking.date = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`; }
+    row.appendChild(btn);
+  }
+}
+
+// Time slots with some booked
+const allSlots = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM'];
+const bookedSlots = ['9:30 AM','11:00 AM','2:30 PM'];
+
+function buildTimes() {
+  const grid = document.getElementById('timeGrid');
+  grid.innerHTML = '';
+  allSlots.forEach(t => {
+    const btn = document.createElement('button');
+    const isBooked = bookedSlots.includes(t);
+    btn.className = 'time-btn' + (isBooked ? ' booked' : '');
+    btn.textContent = t;
+    btn.disabled = isBooked;
+    if (!isBooked) {
+      btn.onclick = () => { document.querySelectorAll('.time-btn:not(.booked)').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); booking.time = t; };
+    }
+    grid.appendChild(btn);
+  });
+}
+
+function goStep(n) {
+  if (n === 1 && !booking.doctor) { alert('Please select a doctor first.'); return; }
+  if (n === 3 && !booking.time) { alert('Please select a time slot.'); return; }
+  if (n === 4) {
+    const name = document.getElementById('pName').value || 'Patient';
+    const phone = document.getElementById('pPhone').value || '—';
+    document.getElementById('cfDoctor').textContent = booking.doctor || '—';
+    document.getElementById('cfSpec').textContent = booking.spec || '—';
+    document.getElementById('cfDate').textContent = booking.date || '—';
+    document.getElementById('cfTime').textContent = booking.time || '—';
+    document.getElementById('cfFee').textContent = booking.fee || '—';
+    document.getElementById('cfPatient').textContent = name + ' · ' + phone;
+  }
+  for (let i = 1; i <= 4; i++) {
+    document.getElementById('panel' + i).classList.remove('active');
+    const tab = document.getElementById('tab' + i);
+    tab.classList.remove('active', 'done');
+    if (i < n) tab.classList.add('done');
+    if (i === n) tab.classList.add('active');
+  }
+  document.getElementById('panel' + n).classList.add('active');
+  document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function confirmBooking() {
+  document.getElementById('bookingBody').style.display = 'none';
+  document.getElementById('bookingSuccess').style.display = 'block';
+  document.getElementById('refNum').textContent = Math.floor(10000 + Math.random() * 90000);
+}
+
+function resetBooking() {
+  booking = { doctor:'', spec:'', fee:'', date:'', time:'' };
+  document.getElementById('bookingBody').style.display = 'block';
+  document.getElementById('bookingSuccess').style.display = 'none';
+  document.querySelectorAll('.doc-option').forEach(d => d.classList.remove('selected'));
+  goStep(1); buildDates(); buildTimes();
+}
+
+// Init
+buildDates(); buildTimes();
+
+// Reveal
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
